@@ -87,6 +87,230 @@
                 </div>
             </div>
             <!--end::Row-->
+
+
+              <!--begin::Row-->
+              <div class="row g-5 g-xl-8">
+
+                {{-- <div class="col-xl-12">
+                    <form>
+                        <label for="size">Size:</label>
+                        <select id="size" name="size">
+                          <option value="">-- Please select a size --</option>
+                          <option value="small">Small</option>
+                          <option value="medium">Medium</option>
+                          <option value="large">Large</option>
+                        </select>
+
+                        <label for="color">Color:</label>
+                        <select id="color" name="color">
+                          <option value="">-- Please select a color --</option>
+                          <option value="red">Red</option>
+                          <option value="green">Green</option>
+                          <option value="blue">Blue</option>
+                        </select>
+
+                        <label for="price">Price:</label>
+                        <input type="text" id="price" name="price">
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="text" id="quantity" name="quantity">
+
+                        <button type="button" onclick="addVariation()">Add Variation</button>
+                      </form>
+
+                      <table id="variations">
+                        <thead>
+                          <tr>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+
+                      <script>
+                        function addVariation() {
+                          const size = document.getElementById("size").value;
+                          const color = document.getElementById("color").value;
+                          const price = document.getElementById("price").value;
+                          const quantity = document.getElementById("quantity").value;
+
+                          if (!size || !color || !price || !quantity) {
+                            alert("Please fill in all fields.");
+                            return;
+                          }
+
+                          const table = document.getElementById("variations").getElementsByTagName('tbody')[0];
+                          const row = table.insertRow(-1);
+                          const sizeCell = row.insertCell(0);
+                          const colorCell = row.insertCell(1);
+                          const priceCell = row.insertCell(2);
+                          const quantityCell = row.insertCell(3);
+
+                          sizeCell.innerHTML = size;
+                          colorCell.innerHTML = color;
+                          priceCell.innerHTML = price;
+                          quantityCell.innerHTML = quantity;
+
+                          document.getElementById("size").value = "";
+                          document.getElementById("color").value = "";
+                          document.getElementById("price").value = "";
+                          document.getElementById("quantity").value = "";
+                        }
+                      </script>
+                </div> --}}
+                <div id="variations">
+                    <div class="variation">
+                        <!--begin::Input group-->
+                        <div class="row mb-6">
+                            <!--begin::Col-->
+                            <div class="col-md-2 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Code Name</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text" name="variation-name[]" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" />
+                                @error('codeName')
+                                    <p class="fv-plugins-message-container invalid-feedback">
+                                        {{  $message }}
+                                    </p>
+                                @enderror
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-2 fv-row">
+                                <!--begin::Label-->
+                                <label class="fw-bold fs-6 mb-2">License</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                @error('license')
+                                    <p class="fv-plugins-message-container invalid-feedback">
+                                        {{  $message }}
+                                    </p>
+                                @enderror
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-2 fv-row">
+                                <!--begin::Label-->
+                                <label class="fw-bold fs-6 mb-2">License</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                @error('license')
+                                    <p class="fv-plugins-message-container invalid-feedback">
+                                        {{  $message }}
+                                    </p>
+                                @enderror
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-2 fv-row">
+                                <!--begin::Label-->
+                                <label class="fw-bold fs-6 mb-2">License</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                @error('license')
+                                    <p class="fv-plugins-message-container invalid-feedback">
+                                        {{  $message }}
+                                    </p>
+                                @enderror
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-2 fv-row">
+                                <!--begin::Label-->
+                                <label class="fw-bold fs-6 mb-2">License</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                @error('license')
+                                    <p class="fv-plugins-message-container invalid-feedback">
+                                        {{  $message }}
+                                    </p>
+                                @enderror
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-2 fv-row">
+                                <label class="fw-bold fs-6 mb-2">Variation</label>
+
+                                <div class="card-toolbar">
+                                    <button id="add-variation" class="btn btn-sm btn-light-primary me-2 border border-secondary py-3">
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect>
+                                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect>
+                                        </svg>
+                                    </span>
+                                    Add Variation</a>
+
+                                    <!--end::Toolbar-->
+                                </div>
+                                {{-- <button id="add-variation">Add Variation</button> --}}
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                </div>
+
+
+
+
+
+                {{-- <div class="col-xl-12">
+                    <div id="variations">
+                        <div class="variation">
+                          <label for="variation-name">Variation Name:</label>
+                          <input type="text" name="variation-name[]">
+                          <label for="variation-value">Variation Value:</label>
+                          <input type="text" name="variation-value[]">
+                          <button class="remove-variation">Remove Variation</button>
+                        </div>
+                        <button id="add-variation">Add Variation</button>
+                    </div>
+                </div> --}}
+                <script>
+                    // Get the add variation button and variations container
+                    const addVariationButton = document.getElementById("add-variation");
+                    const variationsContainer = document.getElementById("variations");
+
+                    // Add event listener to add variation button
+                    addVariationButton.addEventListener("click", () => {
+                        // Create new variation div and append it to variations container
+                        const newVariationDiv = document.createElement("div");
+                        newVariationDiv.classList.add("variation");
+                        newVariationDiv.innerHTML = `<div class="row mb-6"><div class="col-md-2 fv-row"><label class="required fw-bold fs-6 mb-2">Code Name</label><input type="text" name="variation-name[]" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" /> @error('codeName') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">Variation</label><div class="card-toolbar"><button class="btn btn-sm btn-light-primary me-2 border border-secondary py-3 remove-variation"> <span class="svg-icon svg-icon-2"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"> <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect> <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect> </svg> </span> Remove Variation </button> </div></div></div>`;
+                        variationsContainer.appendChild(newVariationDiv);
+
+                        // Add event listener to remove variation button
+                        const removeVariationButton = newVariationDiv.querySelector(".remove-variation");
+                        removeVariationButton.addEventListener("click", () => {
+                            newVariationDiv.remove();
+                        });
+                    });
+                </script>
+
+
+            </div>
+            <!--end::Row-->
         </div>
         <!--end::Container-->
     </div>
