@@ -1,6 +1,6 @@
 @extends('layouts.dashboardMaster')
 @section('title')
-    Add Vehicle
+    Add Product
 @endsection
 @section('content')
     <!--begin::Content-->
@@ -14,6 +14,20 @@
                 @include('components.flashMessage')
                 @include('components.success')
                 @include('components.error')
+                <script src="https://cdn.tiny.cloud/1/j0bzo9ug3y00501t4mv2gq6h4mx2hn3otq6sjmbnzopfc07i/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+                <script>
+                    tinymce.init({
+                      selector: 'textarea#mytextarea',
+                      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+                      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                      tinycomments_mode: 'embedded',
+                      tinycomments_author: 'Author name',
+                      mergetags_list: [
+                        { value: 'First.Name', title: 'First Name' },
+                        { value: 'Email', title: 'Email' },
+                      ]
+                    });
+                </script>
                 <!--end::errors-->
                 <!--begin::Contact-->
                 <div class="card">
@@ -26,17 +40,17 @@
                                 <!--begin::Form-->
                                 <form action="/product/productAdd" class="form" method="post" id="" enctype="multipart/form-data">
                                     @csrf
-                                    <h1 class="fw-bolder text-dark mb-9">Add Vehicle</h1>
+                                    <h1 class="fw-bolder text-dark mb-9">Add Product</h1>
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Col-->
-                                        <div class="col-md-6 fv-row">
+                                        <div class="col-md-12 fv-row">
                                             <!--begin::Label-->
-                                            <label class="required fw-bold fs-6 mb-2">Code Name</label>
+                                            <label class="required fw-bold fs-6 mb-2">Product Name</label>
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" name="codeName" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" />
+                                            <textarea type="text" name="codeName" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" > </textarea>
                                             @error('codeName')
                                                 <p class="fv-plugins-message-container invalid-feedback">
                                                     {{  $message }}
@@ -46,7 +60,7 @@
                                         </div>
                                         <!--end::Col-->
                                         <!--begin::Col-->
-                                        <div class="col-md-6 fv-row">
+                                        {{-- <div class="col-md-6 fv-row">
                                             <!--begin::Label-->
                                             <label class="fw-bold fs-6 mb-2">License</label>
                                             <!--end::Label-->
@@ -59,39 +73,23 @@
                                                 </p>
                                             @enderror
                                             <!--end::Input-->
-                                        </div>
+                                        </div> --}}
                                         <!--end::Col-->
                                     </div>
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                          <!--begin::Col-->
-                                         <div class="col-md-6 fv-row">
+                                         <div class="col-md-12 fv-row">
                                             <!--begin::Label-->
-                                            <label class="required fw-bold fs-6 mb-2">Meter Start</label>
+                                            <label class="required fw-bold fs-6 mb-2">Description</label>
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="number" name="meter_start[]" class="form-control mb-3 mb-lg-0" placeholder="Meter Start" value="{{ old('meter_start') }}"/>
+                                            <textarea id="mytextarea" name="description"></textarea>
                                             @error('meter_start')
                                                 <p class="fv-plugins-message-container invalid-feedback">
-                                                    {{  $message }}
-                                                </p>
-                                            @enderror
-                                            <!--end::Input-->
-                                        </div>
-                                        <!--end::Col-->
-                                        <!--begin::Col-->
-                                        <div class="col-md-6 fv-row">
-                                            <!--begin::Label-->
-                                            <label class="required fw-bold fs-6 mb-2">Meter Start</label>
-                                            <!--end::Label-->
-
-                                            <!--begin::Input-->
-                                            <input type="number" name="meter_start[]" class="form-control mb-3 mb-lg-0" placeholder="Meter Start" value="{{ old('meter_start') }}"/>
-                                            @error('meter_start')
-                                                <p class="fv-plugins-message-container invalid-feedback">
-                                                    {{  $message }}
+                                                    {{ $message }}
                                                 </p>
                                             @enderror
                                             <!--end::Input-->
@@ -105,12 +103,17 @@
                                         <!--begin::Col-->
                                         <div class="col-md-4 fv-row">
                                             <!--begin::Label-->
-                                            <label class="required form-label fs-6 mb-2">Type</label>
+                                            <label class="required form-label fs-6 mb-2">Category</label>
                                             <!--end::Label-->
 
                                             <!--begin::Select2-->
                                             <select class="form-select" name="type" data-control="select2" data-placeholder="Type" data-hide-search="true">
                                                 <option></option>
+                                                <option value="1">Electronics</option>
+                                                <option value="2">Fashion</option>
+                                                <option value="3">Beauty</option>
+                                                <option value="4">Grocery</option>
+
                                                 {{-- @foreach ($types as $type )
                                                     <option value="{{ $type->id }}" {{ old('type') == $type->id ? 'selected' : '' }}>{{ ucfirst($type->name) }}</option>
                                                 @endforeach --}}
@@ -127,7 +130,7 @@
                                         <!--begin::Col-->
                                         <div class="col-md-4 fv-row">
                                             <!--begin::Label-->
-                                            <label class="required form-label fs-6 mb-2">Status</label>
+                                            <label class="required form-label fs-6 mb-2">Subcategory</label>
                                             <!--end::Label-->
                                             <!--begin::Select2-->
                                             <select class="form-select" name="status" data-control="select2" data-placeholder="Status" data-hide-search="true">
@@ -255,4 +258,6 @@
     </div>
     <!--end::Content-->
 @endsection
+
+
 
