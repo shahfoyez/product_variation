@@ -252,7 +252,7 @@
                                 <label class="fw-bold fs-6 mb-2">Variation</label>
 
                                 <div class="card-toolbar">
-                                    <button id="add-variation" class="btn btn-sm btn-light-primary me-2 border border-secondary py-4">
+                                    <button id="add-variation" class="btn btn-sm btn-light-primary me-2 border border-secondary py-3">
                                     <span class="svg-icon svg-icon-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect>
@@ -260,7 +260,7 @@
                                         </svg>
                                     </span>
                                     Add Variation</a>
-            
+
                                     <!--end::Toolbar-->
                                 </div>
                                 {{-- <button id="add-variation">Add Variation</button> --}}
@@ -289,24 +289,23 @@
                 </div> --}}
                 <script>
                     // Get the add variation button and variations container
-const addVariationButton = document.getElementById("add-variation");
-const variationsContainer = document.getElementById("variations");
+                    const addVariationButton = document.getElementById("add-variation");
+                    const variationsContainer = document.getElementById("variations");
 
-// Add event listener to add variation button
-addVariationButton.addEventListener("click", () => {
-  // Create new variation div and append it to variations container
-  const newVariationDiv = document.createElement("div");
-  newVariationDiv.classList.add("variation");
-  newVariationDiv.innerHTML = `<div class="row mb-6"><div class="col-md-2 fv-row"><label class="required fw-bold fs-6 mb-2">Code Name</label><input type="text" name="variation-name[]" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" /> @error('codeName') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <button class="remove-variation">Remove Variation</button></div>  </div>
-  `;
-  variationsContainer.appendChild(newVariationDiv);
+                    // Add event listener to add variation button
+                    addVariationButton.addEventListener("click", () => {
+                        // Create new variation div and append it to variations container
+                        const newVariationDiv = document.createElement("div");
+                        newVariationDiv.classList.add("variation");
+                        newVariationDiv.innerHTML = `<div class="row mb-6"><div class="col-md-2 fv-row"><label class="required fw-bold fs-6 mb-2">Code Name</label><input type="text" name="variation-name[]" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" /> @error('codeName') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">Variation</label><div class="card-toolbar"><button class="btn btn-sm btn-light-primary me-2 border border-secondary py-3 remove-variation"> <span class="svg-icon svg-icon-2"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"> <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect> <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect> </svg> </span> Remove Variation </button> </div></div></div>`;
+                        variationsContainer.appendChild(newVariationDiv);
 
-  // Add event listener to remove variation button
-  const removeVariationButton = newVariationDiv.querySelector(".remove-variation");
-  removeVariationButton.addEventListener("click", () => {
-    newVariationDiv.remove();
-  });
-});
+                        // Add event listener to remove variation button
+                        const removeVariationButton = newVariationDiv.querySelector(".remove-variation");
+                        removeVariationButton.addEventListener("click", () => {
+                            newVariationDiv.remove();
+                        });
+                    });
                 </script>
 
 
