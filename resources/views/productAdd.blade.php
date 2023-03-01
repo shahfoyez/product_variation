@@ -101,15 +101,15 @@
                                      <!--begin::Input group-->
                                      <div class="row mb-6">
                                         <!--begin::Col-->
-                                        <div class="col-md-4 fv-row">
+                                        <div class="col-md-6 fv-row">
                                             <!--begin::Label-->
                                             <label class="required form-label fs-6 mb-2">Category</label>
                                             <!--end::Label-->
 
                                             <!--begin::Select2-->
                                             <select class="form-select" name="type" data-control="select2" data-placeholder="Type" data-hide-search="true">
-                                                <option></option>
-                                                <option value="1">Electronics</option>
+                                                <option ></option>
+                                                <option value="1" selected>Electronics</option>
                                                 <option value="2">Fashion</option>
                                                 <option value="3">Beauty</option>
                                                 <option value="4">Grocery</option>
@@ -128,15 +128,18 @@
                                         </div>
                                         <!--end::Col-->
                                         <!--begin::Col-->
-                                        <div class="col-md-4 fv-row">
+                                        <div class="col-md-6 fv-row">
                                             <!--begin::Label-->
                                             <label class="required form-label fs-6 mb-2">Subcategory</label>
                                             <!--end::Label-->
                                             <!--begin::Select2-->
-                                            <select class="form-select" name="status" data-control="select2" data-placeholder="Status" data-hide-search="true">
+                                            <select class="form-select" name="sub-category" data-control="select2" data-placeholder="Status" data-hide-search="true">
                                                 <option></option>
-                                                <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available</option>
-                                                <option value="maintenance" {{ old('status') == 'maintenance' ? 'selected' : '' }}>Maintenance</option>
+                                                <option value="1" selected>Mobile</option>
+                                                <option value="2">Laptop</option>
+                                                <option value="2">Monitor</option>
+                                                <option value="2">Speaker</option>
+                                                <option value="2">Mouse</option>
                                             </select>
                                             @error('status')
                                                 <p class="fv-plugins-message-container invalid-feedback">
@@ -146,37 +149,141 @@
                                             <!--begin::Select2-->
                                         </div>
                                         <!--end::Col-->
-                                        <!--begin::Col-->
-                                        <div class="col-md-4 fv-row">
-                                            <!--begin::Label-->
-                                            <label class="form-label fs-6 mb-2">GPS Device</label>
-                                            <!--end::Label-->
-
-                                            <!--begin::Select2-->
-                                            <select class="form-select" name="gps_id" data-control="select2" data-placeholder="GPS Device">
-
-                                                <option value = "0">None</option>
-                                                {{-- @foreach ($devices as $device )
-                                                    <option value="{{ $device->id }}"
-                                                        {{ old('gps_id') == $device->id ? 'selected' : '' }}
-                                                        {{ $device->vehicle ? 'disabled' : '' }}
-                                                    >
-                                                        {{ $device->code_name }}
-                                                        {{ $device->vehicle ? ' (Not Available)' : '' }}
-                                                    </option>
-                                                @endforeach --}}
-
-                                            </select>
-                                            @error('gps_id')
-                                                <p class="fv-plugins-message-container invalid-feedback">
-                                                    {{  $message }}
-                                                </p>
-                                            @enderror
-                                            <!--begin::Select2-->
-                                        </div>
-                                        <!--end::Col-->
                                     </div>
                                     <!--end::Input group-->
+
+                                 <!--begin::Row-->
+                                    <div class="row g-5 g-xl-8">
+                                        <div id="variations">
+                                            <div class="variation">
+                                                <!--begin::Input group-->
+                                                <div class="row mb-6">
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-2 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="required fw-bold fs-6 mb-2">Code Name</label>
+                                                        <!--end::Label-->
+
+                                                        <!--begin::Input-->
+                                                        <input type="text" name="variation-name[]" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" />
+                                                        @error('codeName')
+                                                            <p class="fv-plugins-message-container invalid-feedback">
+                                                                {{  $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-2 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="fw-bold fs-6 mb-2">License</label>
+                                                        <!--end::Label-->
+
+                                                        <!--begin::Input-->
+                                                        <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                                        @error('license')
+                                                            <p class="fv-plugins-message-container invalid-feedback">
+                                                                {{  $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-2 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="fw-bold fs-6 mb-2">License</label>
+                                                        <!--end::Label-->
+
+                                                        <!--begin::Input-->
+                                                        <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                                        @error('license')
+                                                            <p class="fv-plugins-message-container invalid-feedback">
+                                                                {{  $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-2 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="fw-bold fs-6 mb-2">License</label>
+                                                        <!--end::Label-->
+
+                                                        <!--begin::Input-->
+                                                        <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                                        @error('license')
+                                                            <p class="fv-plugins-message-container invalid-feedback">
+                                                                {{  $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-2 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="fw-bold fs-6 mb-2">License</label>
+                                                        <!--end::Label-->
+
+                                                        <!--begin::Input-->
+                                                        <input type="text"  name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" />
+                                                        @error('license')
+                                                            <p class="fv-plugins-message-container invalid-feedback">
+                                                                {{  $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-2 fv-row">
+                                                        <label class="fw-bold fs-6 mb-2">Variation</label>
+
+                                                        <div class="card-toolbar">
+                                                            <button type="button" id="add-variation" class="btn btn-sm btn-light-primary me-2 border border-secondary py-3">
+                                                            <span class="svg-icon svg-icon-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect>
+                                                                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect>
+                                                                </svg>
+                                                            </span>
+                                                            Add Variation</a>
+
+                                                            <!--end::Toolbar-->
+                                                        </div>
+                                                        {{-- <button id="add-variation">Add Variation</button> --}}
+                                                    </div>
+                                                    <!--end::Col-->
+                                                </div>
+                                                <!--end::Input group-->
+                                            </div>
+                                        </div>
+                                        <script>
+                                            // Get the add variation button and variations container
+                                            const addVariationButton = document.getElementById("add-variation");
+                                            const variationsContainer = document.getElementById("variations");
+
+                                            // Add event listener to add variation button
+                                            addVariationButton.addEventListener("click", () => {
+                                                // Create new variation div and append it to variations container
+                                                const newVariationDiv = document.createElement("div");
+                                                newVariationDiv.classList.add("variation");
+                                                newVariationDiv.innerHTML = `<div class="row mb-6"><div class="col-md-2 fv-row"><label class="required fw-bold fs-6 mb-2">Code Name</label><input type="text" name="variation-name[]" class="form-control mb-3 mb-lg-0" placeholder="Code Name" value="{{ old('codeName') }}" /> @error('codeName') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">License</label> <input type="text" name="license" class="form-control mb-3 mb-lg-0" placeholder="License" value="{{ old('license') }}" /> @error('license') <p class="fv-plugins-message-container invalid-feedback"> {{ $message }} </p> @enderror </div> <div class="col-md-2 fv-row"> <label class="fw-bold fs-6 mb-2">Variation</label><div class="card-toolbar"><button class="btn btn-sm btn-light-primary me-2 border border-secondary py-3 remove-variation"> <span class="svg-icon svg-icon-2"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"> <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect> <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect> </svg> </span> Remove </button> </div></div></div>`;
+                                                variationsContainer.appendChild(newVariationDiv);
+
+                                                // Add event listener to remove variation button
+                                                const removeVariationButton = newVariationDiv.querySelector(".remove-variation");
+                                                removeVariationButton.addEventListener("click", () => {
+                                                    newVariationDiv.remove();
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                    <!--end::Row-->
+
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Col-->
@@ -231,6 +338,7 @@
                                     </div>
                                     <!--end::Input group-->
 
+
                                     <!--begin::Submit-->
                                     <button type="submit" class="btn btn-primary mt-5" onClick="this.form.submit(); this.disabled=true; this.innerText='Wait...'; ">
                                         <!--begin::Indicator-->
@@ -258,6 +366,3 @@
     </div>
     <!--end::Content-->
 @endsection
-
-
-

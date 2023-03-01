@@ -91,7 +91,6 @@
 
               <!--begin::Row-->
               <div class="row g-5 g-xl-8">
-
                 {{-- <div class="col-xl-12">
                     <form>
                         <label for="size">Size:</label>
@@ -270,23 +269,6 @@
                         <!--end::Input group-->
                     </div>
                 </div>
-
-
-
-
-
-                {{-- <div class="col-xl-12">
-                    <div id="variations">
-                        <div class="variation">
-                          <label for="variation-name">Variation Name:</label>
-                          <input type="text" name="variation-name[]">
-                          <label for="variation-value">Variation Value:</label>
-                          <input type="text" name="variation-value[]">
-                          <button class="remove-variation">Remove Variation</button>
-                        </div>
-                        <button id="add-variation">Add Variation</button>
-                    </div>
-                </div> --}}
                 <script>
                     // Get the add variation button and variations container
                     const addVariationButton = document.getElementById("add-variation");
@@ -307,8 +289,6 @@
                         });
                     });
                 </script>
-
-
             </div>
             <!--end::Row-->
         </div>
